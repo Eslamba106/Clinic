@@ -27,6 +27,7 @@ export default function App() {
         <Routes>
           {/* Dashboard Layout */}
           <Route path="/" element={<SignIn />}/> 
+          <Route path="/dash" element={<Home />}/> 
           <Route path="/signup" element={<SignUp />} /> 
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -35,25 +35,25 @@ class SectionSeeder extends Seeder
         Section::updateOrCreate(['id' => 15], ['name' => 'create_user', 'section_group_id' => 9, 'caption' => 'create_user']);
         
     
-        // // Test Method Management 16 - 22
-        // Section::updateOrCreate(['id' => 16], ['name' => 'test_method_management', 'caption' => 'test_method_management']);
-        // Section::updateOrCreate(['id' => 17], ['name' => 'all_test_methods', 'section_group_id' => 16, 'caption' => 'show_all_test_methods']);
-        // Section::updateOrCreate(['id' => 18], ['name' => 'create_test_method', 'section_group_id' => 16, 'caption' => 'create_test_method']);
-        // Section::updateOrCreate(['id' => 19], ['name' => 'change_test_methods_role', 'section_group_id' => 16, 'caption' => 'change_test_methods_role']);
-        // Section::updateOrCreate(['id' => 20], ['name' => 'change_test_methods_status', 'section_group_id' => 16, 'caption' => 'change_test_methods_status']);
-        // Section::updateOrCreate(['id' => 21], ['name' => 'delete_test_method', 'section_group_id' => 16, 'caption' => 'delete_test_method']);
-        // Section::updateOrCreate(['id' => 22], ['name' => 'edit_test_method', 'section_group_id' => 16, 'caption' => 'edit_test_method']);
+        // Clinics Management 16 - 22
+        Section::updateOrCreate(['id' => 16], ['name' => 'clinic_management', 'caption' => 'clinic_management']);
+        Section::updateOrCreate(['id' => 17], ['name' => 'all_clinics', 'section_group_id' => 16, 'caption' => 'show_all_clinics']);
+        Section::updateOrCreate(['id' => 18], ['name' => 'create_clinic', 'section_group_id' => 16, 'caption' => 'create_clinic']);
+        Section::updateOrCreate(['id' => 19], ['name' => 'show_clinic', 'section_group_id' => 16, 'caption' => 'show_clinic']);
+        Section::updateOrCreate(['id' => 20], ['name' => 'change_clinics_status', 'section_group_id' => 16, 'caption' => 'change_clinics_status']);
+        Section::updateOrCreate(['id' => 21], ['name' => 'delete_clinic', 'section_group_id' => 16, 'caption' => 'delete_clinic']);
+        Section::updateOrCreate(['id' => 22], ['name' => 'edit_clinic', 'section_group_id' => 16, 'caption' => 'edit_clinic']);
         
     
     
-        // // Test Method Management 23 - 29
-        // Section::updateOrCreate(['id' => 23], ['name' => 'unit_management', 'caption' => 'unit_management']);
-        // Section::updateOrCreate(['id' => 24], ['name' => 'change_units_role', 'section_group_id' => 23, 'caption' => 'change_units_role']);
-        // Section::updateOrCreate(['id' => 25], ['name' => 'change_units_status', 'section_group_id' => 23, 'caption' => 'change_units_status']);
-        // Section::updateOrCreate(['id' => 26], ['name' => 'delete_unit', 'section_group_id' => 23, 'caption' => 'delete_unit']);
-        // Section::updateOrCreate(['id' => 27], ['name' => 'edit_unit', 'section_group_id' => 23, 'caption' => 'edit_unit']);
-        // Section::updateOrCreate(['id' => 28], ['name' => 'create_unit', 'section_group_id' => 23, 'caption' => 'create_unit']);
-        // Section::updateOrCreate(['id' => 29], ['name' => 'all_units', 'section_group_id' => 23, 'caption' => 'show_all_units']);
+        // Doctors Management 23 - 29
+        Section::updateOrCreate(['id' => 23], ['name' => 'doctor_management', 'caption' => 'doctor_management']);
+        Section::updateOrCreate(['id' => 24], ['name' => 'change_doctors_role', 'section_group_id' => 23, 'caption' => 'change_doctors_role']);
+        Section::updateOrCreate(['id' => 25], ['name' => 'change_doctors_status', 'section_group_id' => 23, 'caption' => 'change_doctors_status']);
+        Section::updateOrCreate(['id' => 26], ['name' => 'delete_doctor', 'section_group_id' => 23, 'caption' => 'delete_doctor']);
+        Section::updateOrCreate(['id' => 27], ['name' => 'edit_doctor', 'section_group_id' => 23, 'caption' => 'edit_doctor']);
+        Section::updateOrCreate(['id' => 28], ['name' => 'create_doctor', 'section_group_id' => 23, 'caption' => 'create_doctor']);
+        Section::updateOrCreate(['id' => 29], ['name' => 'all_doctors', 'section_group_id' => 23, 'caption' => 'show_all_doctors']);
         
     
     

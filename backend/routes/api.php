@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\general\AuthController;
 use App\Http\Controllers\general\RoleController;
 use App\Http\Controllers\general\UserController;
@@ -21,4 +23,25 @@ Route::group(['prefix' => 'admin/user', 'middleware' => 'auth:sanctum'], functio
     Route::post('add-user',  [UserController::class, 'store'])->name('store.user');
     Route::get('user-profile',  [UserController::class, 'userProfile'])->name('user.profile');
     Route::post('change-password',  [UserController::class, 'changePassword'])->name('change.password');
+});
+
+// clinics 
+
+Route::group(['prefix' => 'clinics', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/', [ClinicController::class, 'index'])->name('clinics');
+    Route::get('/show-clinic/{id}', [ClinicController::class, 'show'])->name('show_clinic_info');
+    Route::get('/sections', [ClinicController::class, 'section'])->name('sections');
+    Route::post('/store', [ClinicController::class, 'store'])->name('clinics.store'); 
+    Route::post('/update/{id}', [ClinicController::class, 'update'])->name('clinics.update');
+    Route::delete('/delete/{id}', [ClinicController::class, 'destroy'])->name('clinics.delete');
+});
+
+// doctors 
+
+Route::group(['prefix' => 'doctors', 'middleware' => 'auth:sanctum'], function () {
+    Route::get('/', [DoctorController::class, 'index'])->name('doctors');
+    Route::get('/show-doctor/{id}', [DoctorController::class, 'show'])->name('show_doctor_info'); 
+    Route::post('/store', [DoctorController::class, 'store'])->name('doctors.store'); 
+    Route::post('/update/{id}', [DoctorController::class, 'update'])->name('doctors.update');
+    Route::delete('/delete/{id}', [DoctorController::class, 'destroy'])->name('doctors.delete');
 });
