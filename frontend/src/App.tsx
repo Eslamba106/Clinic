@@ -1,37 +1,44 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./components/common/ScrollToTop";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+// Layouts
+import AppLayout from "./layout/AppLayout";
+
+// Pages
 import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
-import NotFound from "./pages/OtherPage/NotFound";
-import UserProfiles from "./pages/UserProfiles";
-import Videos from "./pages/UiElements/Videos";
-import Images from "./pages/UiElements/Images";
-import Alerts from "./pages/UiElements/Alerts";
-import Badges from "./pages/UiElements/Badges";
-import Avatars from "./pages/UiElements/Avatars";
-import Buttons from "./pages/UiElements/Buttons";
-import LineChart from "./pages/Charts/LineChart";
-import BarChart from "./pages/Charts/BarChart";
-import Calendar from "./pages/Calendar";
-import BasicTables from "./pages/Tables/BasicTables";
-import FormElements from "./pages/Forms/FormElements";
-import Blank from "./pages/Blank";
-import AppLayout from "./layout/AppLayout";
-import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
+import NotFound from "./pages/OtherPage/NotFound";
 
 export default function App() {
   return (
-    <>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          {/* Dashboard Layout */}
-          <Route path="/" element={<SignIn />}/> 
-          <Route path="/dash" element={<Home />}/> 
-          <Route path="/signup" element={<SignUp />} /> 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        {/* صفحة تسجيل الدخول */}
+        <Route path="/" element={<SignIn />} />
+
+        {/* صفحة التسجيل */}
+        <Route path="/signup" element={<SignUp />} />
+
+        {/* الصفحات المحمية */}
+        <Route
+          path="/dashboard/*"
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
+          {/* صفحة الداشبورد الرئيسية */}
+          <Route index element={<Home />} />
+          {/* باقي الصفحات داخل الداشبورد */}
+        </Route>
+
+        {/* لو المسار مش موجود */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
