@@ -15,7 +15,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class UserController extends Controller
 {
      use AuthorizesRequests;
-    public function index(Request $request){
+    public function user_list(Request $request){
 
         $this->authorize('user_management'); 
 
@@ -51,14 +51,18 @@ class UserController extends Controller
         $roles = Role::select('id' , 'name'  )->get();
 
         $users = User::orderBy("created_at","desc")->paginate(10);
-        return view("tenant.users.all_users", compact("users" , 'roles'));
+        return response()->apiSuccess($users, 'User fetched successfully', 200, true);
     }
 
-    public function edit($id){
+    public function get_user($id){
         $this->authorize('edit_user');
         $user = User::findOrFail($id);
         $roles = Role::select('id' , 'name'  )->get();
-        return view("tenant.users.edit", compact("user" , 'roles'));
+        $data = [
+            "user" => $user,
+            "roles" => $roles,
+        ];
+        return response()->apiSuccess($data, 'User fetched successfully', 200, true);
     }
 
     public function create(){

@@ -10,19 +10,16 @@ import SignIn from "./pages/AuthPages/SignIn";
 import SignUp from "./pages/AuthPages/SignUp";
 import Home from "./pages/Dashboard/Home";
 import NotFound from "./pages/OtherPage/NotFound";
-
+import BasicTables from "./pages/Tables/BasicTables";
+import UserList from "./pages/Users/UserList";
+import EditUser from "./pages/Users/EditUser";
 export default function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        {/* صفحة تسجيل الدخول */}
         <Route path="/" element={<SignIn />} />
-
-        {/* صفحة التسجيل */}
         <Route path="/signup" element={<SignUp />} />
-
-        {/* الصفحات المحمية */}
         <Route
           path="/dashboard/*"
           element={
@@ -31,12 +28,22 @@ export default function App() {
             </ProtectedRoute>
           }
         >
-          {/* صفحة الداشبورد الرئيسية */}
           <Route index element={<Home />} />
-          {/* باقي الصفحات داخل الداشبورد */}
+          <Route path="basic-tables" element={<BasicTables />} />
+        </Route>
+        <Route
+          path="/users/*"
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<UserList />} />
+          <Route path="edit/:id" element={<EditUser />} />
+
         </Route>
 
-        {/* لو المسار مش موجود */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -36,9 +36,8 @@ export default function SignInForm() {
       localStorage.setItem("token", data.access_token);
       localStorage.setItem("user", JSON.stringify(data.user)); 
       navigate("/dashboard"); 
-    } catch (err: any) {
-      console.error(err);
-      setError("❌ بيانات الدخول غير صحيحة");
+    } catch (err: any) { 
+      setError("Invalid email or password.");
     } finally {
       setLoading(false);
     }
@@ -63,7 +62,7 @@ export default function SignInForm() {
               <div>
                 <Label>Email <span className="text-error-500">*</span></Label>
                 <Input
-                  type="email"
+                  type="text"
                   placeholder="info@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

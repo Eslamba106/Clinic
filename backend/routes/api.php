@@ -19,9 +19,10 @@ Route::group(['prefix' => 'admin/roles', 'middleware' => 'auth:sanctum'], functi
     Route::post('/update/{id}', [RoleController::class, 'update'])->name('roles.update');
     Route::delete('/delete/{id}', [RoleController::class, 'destroy'])->name('roles.delete');
 });
-Route::group(['prefix' => 'admin/user', 'middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'users', 'middleware' => 'auth:sanctum'], function () {
     Route::post('add-user',  [UserController::class, 'store'])->name('store.user');
-    Route::get('user-profile',  [UserController::class, 'userProfile'])->name('user.profile');
+    Route::get('all-users',  [UserController::class, 'user_list'])->name('user.user_list');
+    Route::get('get-user/{id}',  [UserController::class, 'get_user'])->name('user.get_user');
     Route::post('change-password',  [UserController::class, 'changePassword'])->name('change.password');
 });
 
